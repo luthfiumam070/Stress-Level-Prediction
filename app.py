@@ -28,65 +28,68 @@ st.divider()
 # INPUT
 # =========================
 
-label_map_kualitas = {
-    1: "Sangat Buruk",
-    2: "Buruk",
-    3: "Sedang",
-    4: "Baik",
-    5: "Sangat Baik"
-}
+options = [1, 2, 3, 4, 5]
 
-label_map_frekuensi = {
-    1: "Tidak Pernah",
-    2: "Sangat Jarang",
-    3: "Sedang",
-    4: "Sering",
-    5: "Sangat Sering"
-}
-
-label_map_Beban = {
-    1: "Tidak Berat",
-    2: "Sedikit Berat",
-    3: "Sedang",
-    4: "Berat",
-    5: "Sangat Berat"
-}
-
-sleep = st.slider(
+sleep = st.select_slider(
     "Kualitas Tidur",
-    min_value=1,
-    max_value=5,
+    options=options,
     value=3,
-    format_func=lambda x: label_map_kualitas[x]
+    format_func=lambda x: {
+        1: "Sangat Buruk",
+        2: "Buruk",
+        3: "Sedang",
+        4: "Baik",
+        5: "Sangat Baik"
+    }[x]
 )
 
-headache = st.slider(
+headache = st.select_slider(
     "Frekuensi Sakit Kepala",
-    min_value=1,
-    max_value=5,
+    options=options,
     value=3,
-    format_func=lambda x: label_map_frekuensi[x]
+    format_func=lambda x: {
+        1: "Sangat Buruk",
+        2: "Buruk",
+        3: "Sedang",
+        4: "Baik",
+        5: "Sangat Baik"
+    }[x]
 )
-academic = st.slider(
+academic = st.select_slider(
     "Performa Akademik",
-    min_value=1,
-    max_value=5,
+    options=options,
     value=3,
-    format_func=lambda x: label_map_kualitas[x]
+    format_func=lambda x: {
+        1: "Sangat Buruk",
+        2: "Buruk",
+        3: "Sedang",
+        4: "Baik",
+        5: "Sangat Baik"
+    }[x]
 )
-study_load = st.slider(
+study_load = st.select_slider(
     "Beban Studi",
-    min_value=1,
-    max_value=5,
+    options=options,
     value=3,
-    format_func=lambda x: label_map_Beban[x]
+    format_func=lambda x: {
+        1: "Sangat Buruk",
+        2: "Buruk",
+        3: "Sedang",
+        4: "Baik",
+        5: "Sangat Baik"
+    }[x]
 )
-extracurricular = st.slider(
+extracurricular = st.select_slider(
     "Beban Kegiatan Ekstrakurikuler", 
-    min_value=1,
-    max_value=5,
+    options=options,
     value=3,
-    format_func=lambda x: label_map_Beban[x]
+    format_func=lambda x: {
+        1: "Sangat Buruk",
+        2: "Buruk",
+        3: "Sedang",
+        4: "Baik",
+        5: "Sangat Baik"
+    }[x]
 )
 
 # =========================
