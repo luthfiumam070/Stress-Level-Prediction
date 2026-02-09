@@ -27,11 +27,67 @@ st.divider()
 # =========================
 # INPUT
 # =========================
-sleep = st.slider("Kualitas Tidur", 1, 5, 3)
-headache = st.slider("Frekuensi Sakit Kepala", 1, 5, 3)
-academic = st.slider("Performa Akademik", 1, 5, 3)
-study_load = st.slider("Beban Studi", 1, 5, 3)
-extracurricular = st.slider("Beban Kegiatan Ekstrakurikuler", 1, 5, 3)
+
+label_map_kualitas = {
+    1: "Sangat Buruk",
+    2: "Buruk",
+    3: "Sedang",
+    4: "Baik",
+    5: "Sangat Baik"
+}
+
+label_map_frekuensi = {
+    1: "Tidak Pernah",
+    2: "Sangat Jarang",
+    3: "Sedang",
+    4: "Sering",
+    5: "Sangat Sering"
+}
+
+label_map_Beban = {
+    1: "Tidak Berat",
+    2: "Sedikit Berat",
+    3: "Sedang",
+    4: "Berat",
+    5: "Sangat Berat"
+}
+
+sleep = st.slider(
+    "Kualitas Tidur",
+    min_value=1,
+    max_value=5,
+    value=3,
+    format_func=lambda x: label_map_kualitas[x]
+)
+
+headache = st.slider(
+    "Frekuensi Sakit Kepala",
+    min_value=1,
+    max_value=5,
+    value=3,
+    format_func=lambda x: label_map_frekuensi[x]
+)
+academic = st.slider(
+    "Performa Akademik",
+    min_value=1,
+    max_value=5,
+    value=3,
+    format_func=lambda x: label_map_kualitas[x]
+)
+study_load = st.slider(
+    "Beban Studi",
+    min_value=1,
+    max_value=5,
+    value=3,
+    format_func=lambda x: label_map_Beban[x]
+)
+extracurricular = st.slider(
+    "Beban Kegiatan Ekstrakurikuler", 
+    min_value=1,
+    max_value=5,
+    value=3,
+    format_func=lambda x: label_map_Beban[x]
+)
 
 # =========================
 # PREDICT
