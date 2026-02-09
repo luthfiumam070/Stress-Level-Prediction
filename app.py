@@ -48,11 +48,11 @@ headache = st.select_slider(
     options=options,
     value=3,
     format_func=lambda x: {
-        1: "Sangat Buruk",
-        2: "Buruk",
+        1: "Tidak Pernah",
+        2: "Jarang",
         3: "Sedang",
-        4: "Baik",
-        5: "Sangat Baik"
+        4: "Sering",
+        5: "Sangat Sering"
     }[x]
 )
 academic = st.select_slider(
@@ -72,11 +72,11 @@ study_load = st.select_slider(
     options=options,
     value=3,
     format_func=lambda x: {
-        1: "Sangat Buruk",
-        2: "Buruk",
+        1: "Tidak Berat",
+        2: "Sedikit Berat",
         3: "Sedang",
-        4: "Baik",
-        5: "Sangat Baik"
+        4: "Berat",
+        5: "Sangat Berat"
     }[x]
 )
 extracurricular = st.select_slider(
@@ -84,11 +84,11 @@ extracurricular = st.select_slider(
     options=options,
     value=3,
     format_func=lambda x: {
-        1: "Sangat Buruk",
-        2: "Buruk",
+        1: "Tidak Berat",
+        2: "Sedikit Berat",
         3: "Sedang",
-        4: "Baik",
-        5: "Sangat Baik"
+        4: "Berat",
+        5: "Sangat Berat"
     }[x]
 )
 
