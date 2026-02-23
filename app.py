@@ -96,27 +96,33 @@ extracurricular = st.select_slider(
 # PREDICT
 # =========================
 if st.button("🔍 Prediksi Tingkat Stres"):
-    input_data = np.array([[
-        sleep,
-        headache,
-        academic,
-        study_load,
-        extracurricular
-    ]])
+    try:
+        input_data = np.array([[sleep, headache, academic, study_load, extracurricular]])
 
-    input_scaled = scaler.transform(input_data)
-    prediction = model.predict(input_scaled)
+        if input_data.shape[1] != scaler.n_features_in_:
+            raise ValueError("Jumlah fitur tidak sesuai.")
 
-    st.divider()
-    st.subheader("Hasil Prediksi")
+        input_scaled = scaler.transform(input_data)
+        prediction = model.predict(input_scaled)[0]
 
-    if prediction == 1:
-        st.success(f"😊 Tingkat Stres Sangat Rendah ({prediction})")
-    elif prediction == 2:
-        st.warning(f"😊 Tingkat Stres Rendah ({prediction})")
-    elif prediction == 3:
-        st.warning(f"😐 Tingkat Stres Sedang ({prediction})")
-    elif prediction == 4:
-        st.warning(f"😟 Tingkat Stres Tinggi ({prediction})")
-    else:
-        st.error(f"😟 Tingkat Stres Sangat Tinggi ({prediction})")
+        if prediction not in [1,2,3,4,5]:
+            raise ValueError("Output model tidak valid.")
+            
+        st.divider()
+        st.subheader("Hasil Prediksi")
+    
+        if prediction == 1:
+            st.success(f"😊 Tingkat Stres Sangat Rendah ({prediction})")
+        elif prediction == 2:
+            st.warning(f"😊 Tingkat Stres Rendah ({prediction})")
+        elif prediction == 3:
+            st.warning(f"😐 Tingkat Stres Sedang ({prediction})")
+        elif prediction == 4:
+            st.warning(f"😟 Tingkat Stres Tinggi ({prediction})")
+        else:
+            st.error(f"😟 Tingkat Stres Sangat Tinggi ({prediction})")
+            
+    except Exception as e:
+        st.error("Terjadi kesalahan saat prediksi.")
+        if DEBUG:
+            st.code(traceback.format_exc())
